@@ -1,8 +1,9 @@
+
 from django.db import models
 from countries_cities.models import Country, City
 
 
-class Gallary:
+class Gallary(models.Model):
 
 
     def load_photo(self, filename):

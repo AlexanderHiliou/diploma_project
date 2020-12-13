@@ -7,7 +7,7 @@ class Country(models.Model):
 
     def load_photo(self, filename):
         file_type = filename.split(".")[-1]
-        file_name = ".".join(["flag/{}_flag", file_type])
+        file_name = ".".join(["Flags/{}_flag", file_type])
         return file_name.format(
             self.name,
         )

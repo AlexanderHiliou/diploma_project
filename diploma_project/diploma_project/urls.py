@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
     path('home/', include("home.urls")),
-    path('gallary/', include('gallary.urls')),
+    path('gallery/', include("gallary.urls")),
     path('countries/', include("countries_cities.urls")),
     path('account/', include("account.urls")),
     path("", lambda request: redirect("home/")),
