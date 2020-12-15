@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+    <div class='flags'>
+        <div align="center">
+            {% for country in countries %}
+                <p><a href="{% url 'cities' country.id %}"><img src='{{ country.icon.url }}' width="350" height="250" ></a></p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

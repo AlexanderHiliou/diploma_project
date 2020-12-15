@@ -1,5 +1,16 @@
 from django.shortcuts import render
+from .models import Gallary
+from countries_cities.models import Country, City
 
 
-def gallary_page(requests):
-    return render(requests, 'gallary.html', {})
+
+def countries(request):
+    countries = Country.objects.all()
+    context = {'countries': countries}
+    return render(request, 'portfolio.html', context)
+
+
+def cities(request, id):
+    cities = City.objects.filter(country=id)
+    content = {'cities': cities}
+    return render(request, 'cities.html', content)
