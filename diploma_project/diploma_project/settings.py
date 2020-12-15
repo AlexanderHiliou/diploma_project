@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'gallary',
     'countries_cities',
     'account',
+    "store"
 ]
 
 MIDDLEWARE = [
