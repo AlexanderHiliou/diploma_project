@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
 <h3>Reset your password</h3>
 
 <form method="POST" action="">
@@ -5,3 +10,4 @@
     {{form.as_p}}
     <input type="submit" name="Reset">
 </form>
+{% endblock content %}

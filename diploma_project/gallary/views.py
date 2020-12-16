@@ -4,7 +4,7 @@ from countries_cities.models import Country, City
 
 
 
-def countries(request):
+def countries_gallery(request):
     countries = Country.objects.all()
     context = {'countries': countries}
     return render(request, 'portfolio.html', context)

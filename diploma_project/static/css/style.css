@@ -37,7 +37,7 @@ body {
     height: 100%;
     font-family: "Helvetica 65 Medium", sans-serif;
     -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
+    font-smooth: auto;
 }
 
 h1,

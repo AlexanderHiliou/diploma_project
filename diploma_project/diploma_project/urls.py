@@ -27,7 +27,8 @@ urlpatterns = [
     path('gallery/', include("gallary.urls")),
     path('countries/', include("countries_cities.urls")),
     path('account/', include("account.urls")),
-    path("", lambda request: redirect("home/")),
+    path('store/', include("store.urls")),
+    path("", lambda request: redirect("/home/")),
 ]
 
 

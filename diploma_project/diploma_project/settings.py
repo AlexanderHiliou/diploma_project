@@ -39,12 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "diploma_project",
     'home',
     'blog',
     'gallary',
     'countries_cities',
     'account',
-    "store"
+    "store",
 ]
 
 MIDDLEWARE = [

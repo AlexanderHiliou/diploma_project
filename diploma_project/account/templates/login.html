@@ -1,4 +1,6 @@
-
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
 <h3>Login</h3>
 
 		<form method="POST" action="">
@@ -29,3 +31,4 @@
    <div>
         <a href="{% url 'password_reset' %}" class= "m1-m2">Reset your password</a>
    </div>
+   {% endblock %}
