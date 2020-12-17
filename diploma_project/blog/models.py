@@ -16,10 +16,19 @@ class Post(models.Model):
     body = models.TextField(verbose_name='Текст' )
     publish = models.DateTimeField(default=timezone.now, verbose_name='Время публикации')
     status = models.CharField(max_length=10, choices = STATUS_VARIANT, default='draft')
+    image = models.ImageField(null=True, blank=True)
     likes = models.ManyToManyField(User, blank=True, related_name='blog_likes')
 
     def likes_in_total(self):
         return self.likes.count()
+
+    @property
+    def imageURL(self):
+        try: 
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
     
     class Meta:
@@ -27,6 +36,7 @@ class Post(models.Model):
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
         ordering = ('-publish',)
+        get_latest_by = 'publish'
 
 
     

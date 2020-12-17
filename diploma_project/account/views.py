@@ -67,6 +67,5 @@ class PasswordSetView(PasswordResetConfirmView):
 
 def changed_password_message(request):
     return render(request, 'changed_password_message.html')
-
+    
 # Create your views here.
-

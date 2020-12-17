@@ -8,8 +8,10 @@ from .forms import CommentForm
 
 
 def blog_list(request):
-    list_o = Post.objects.all()
-    return render(request, 'blog_list.html', {'list': list_o})
+    last = Post.objects.latest()
+    list_o = Post.objects.all()[1:]
+    context = {'list': list_o, 'last': last }
+    return render(request, 'blog_list.html', context )
 
 
 def get_likes(request, pk):
@@ -30,10 +32,10 @@ class BlogDetailView(FormMixin, DetailView):
         return reverse_lazy('blog_detail', kwargs={'pk':self.get_object().id})
 
         
-    def get_likes(request, pk):
-        post = get_object_or_404(Post, id=request.POST.get('post_id'))
-        post.likes.add(request.user)
-        return render(request,'blog_detail.html', {'post':post})
+    # def get_likes(request, pk):
+    #     post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    #     post.likes.add(request.user)
+    #     return render(request,'blog_detail.html', {'post':post})
 
         
     def post(self,request, *args, **kwargs):
@@ -51,9 +53,6 @@ class BlogDetailView(FormMixin, DetailView):
         return super().form_valid(form)
 
     
-
-
-
 
 
 

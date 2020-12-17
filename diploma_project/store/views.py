@@ -6,6 +6,7 @@ import datetime
 from .models import *
 
 
+
 def store(request):
 
     if request.user.is_authenticated:
@@ -34,6 +35,7 @@ def cart(request):
         items = []
         order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
         cartItems = order['get_cart_items']
+        
 
 
     context = {"items":items, "order":order, "cartItems":cartItems}
