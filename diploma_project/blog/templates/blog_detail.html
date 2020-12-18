@@ -31,14 +31,14 @@
 						<div class="blog-head">
 							<div class="blog-tags">fashion, event, lifestyle</div>
 							<h2>{{ post.title }}</h2>
-							<h3>Published {{ last.publish }} by {{ last.author }}</h3>
+							<h3>Published {{ post.publish }} by {{ post.author }}</h3>
 						</div>
 						<p>{{post.body}}</p>
 					</div>
 					<br/>
                     <form action="{% url 'like_post' post.pk %}", method="POST">
 					{% csrf_token %}
-					<button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">Like</button>  {{post.likes_in_total}} Likes
+					<button type="submit", name="post_id", value="{{post.id}}"><img id='like-icon'src="{% static 'img/heart.png' %}"/></button>  {{post.likes_in_total}} Likes
 					</form>
 					<br/>
 					<div class="blog-comments">
@@ -171,7 +171,7 @@
 			<div class="up-btn" id="backTotop">UP</div>
 		</div>
 	</div>
-      <form action="{% url '' post.pk %}" id="form_add" method="POST">
+      <form action='' id="form_add" method="POST">
       {% csrf_token %}
            {{form.as_p}}
       </form>
