@@ -22,58 +22,45 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="blog-item">
-						<div class="blog-thumb set-bg" data-setbg="img/blog/2.jpg">
+						<div class="blog-thumb set-bg" data-setbg={{post.imageURL}}>
 							<div class="blog-date">
-								<h2>20</h2>
-								<p>Jan</p>							
+								<h2>{{post.publish.day}}.
+								{{post.publish.month}}</h2>							
 							</div>
 						</div>
 						<div class="blog-head">
 							<div class="blog-tags">fashion, event, lifestyle</div>
-							<h2>Our fashion App</h2>
+							<h2>{{ post.title }}</h2>
+							<h3>Published {{ last.publish }} by {{ last.author }}</h3>
 						</div>
-						<p>Aenean quis velit pulvinar, pellentesque neque vel, laoreet orci. Suspendisse potenti. Donec congue vel justo eget malesuada. In arcu justo, sagittis consequat pulvinar quis, pretium quis massa. Vestibulum nec nibh eu nisi rutrum iaculis. Pellentesque placerat sit amet leo in vestibulum. Suspendisse quam neque, rutrum vel scelerisque eu.</p>
-						
-						<p>Duis ultrices feugiat fringilla. Mauris nibh libero, interdum et lorem eget, maximus feugiat felis. Cras vulputate mollis dolor. Quisque ultricies arcu a tellus pellentesque ultrices. Ut euismod luctus elit id eleifend. Donec semper massa a imperdiet mattis. In vel mattis neque, nec ultricies lectus. Morbi auctor lacus nec hendrerit consectetur. Phasellus neque erat, rhoncus in metus ut, ultrices tristique mi. Duis eget eros est. Etiam a lorem eget diam bibendum venenatis sit amet sed mi. In nec suscipit nulla. Pellentesque turpis neque, commodo nec leo vel, euismod consectetur magna. Vivamus tristique dignissim lorem, eu finibus nisl mattis nec. Mauris congue sapien et pretium vehicula. </p>
-						
-						<blockquote>
-							Phasellus neque erat, rhoncus in metus ut, ultrices tristique mi. Duis eget eros est. Etiam a lorem eget diam bibendum venenatis sit amet sed mi. In nec sus-cipit nulla. Pellentesque turpis neque, commodo nec leo vel.
-						</blockquote>
-						<p>Quisque ultricies arcu a tellus pellentesque ultrices. Ut euismod luctus elit id eleifend. Donec semper massa a imperdiet mattis. In vel mattis neque, nec ultricies lectus. Morbi auctor lacus nec hendrerit consectetur. Phasellus neque erat, rhoncus in metus ut, ultrices tristique mi. Duis eget eros est. Etiam a lorem eget diam bibendum venenatis sit amet sed mi. In nec suscipit nulla. Pellentesque turpis neque, commodo nec leo vel, euismod consectetur magna. Vivamus tristique dignissim lorem, eu finibus nisl mattis nec. Mauris congue sapien et pretium vehicula. </p>
+						<p>{{post.body}}</p>
 					</div>
+					<br/>
+                    <form action="{% url 'like_post' post.pk %}", method="POST">
+					{% csrf_token %}
+					<button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">Like</button>  {{post.likes_in_total}} Likes
+					</form>
+					<br/>
 					<div class="blog-comments">
-						<h3 class="bc-title">2 Comments</h3>
+						<h3 class="bc-title">{{post.comments.all.count}}  Comments</h3>
 						<ul class="comments-list">
+						{% for comment in post.comments.all%}
 							<li>
-								<img src="img/blog/comment-thumb/1.jpg" alt="" class="comment-avatar">
 								<div class="comment-text">
-									<h6>Maria Smith <span>| Jan 22, 2019</span></h6>
-									<p>Quisque ultricies arcu a tellus pellentesque ultrices. Ut euismod luctus elit id eleifend. Donec semper massa a imperdiet mattis. In vel mattis neque, nec ultricies lectus. Morbi auctor lacus nec hendrerit consectetur. </p>
+									<h6>{{comment.author}}<span>| {{comment.date}}</span></h6>
+									<p>  {{comment.body}} </p>
 									<a href="#" class="reply-btn">Reply</a>
 								</div>
 							</li>
-							<li>
-								<img src="img/blog/comment-thumb/2.jpg" alt="" class="comment-avatar">
-								<div class="comment-text">
-									<h6>Maria Smith <span>| Jan 22, 2019</span></h6>
-									<p>Quisque ultricies arcu a tellus pellentesque ultrices. Ut euismod luctus elit id eleifend. Donec semper massa a imperdiet mattis. In vel mattis neque, nec ultricies lectus. Morbi auctor lacus nec hendrerit consectetur. </p>
-									<a href="#" class="reply-btn">Reply</a>
-								</div>
-							</li>
+						{% endfor %}
 						</ul>
-						<h3 class="bc-title">Leave a reply</h3>
-						<form class="comment-form">
+						<h3 class="bc-title">Add your comments</h3>
+						<form class="comment-form" action='' id="form_add" method="POST">
+						    {% csrf_token %}
 							<div class="row">
-								<div class="col-md-6">
-									<input type="text" placeholder="Your Name">
-								</div>
-								<div class="col-md-6">
-									<input type="text" placeholder="Your Email">
-								</div>
 								<div class="col-md-12">
-									<input type="text" placeholder="Subject">
-									<textarea placeholder="Message"></textarea>
-									<button class="site-btn sb-dark">SEND <i class="fa fa-angle-double-right"></i></button>
+								    {{form.as_p}}
+									<button  form="form_add", type="submit", class="site-btn sb-dark"> ADD <i class="fa fa-angle-double-right"></i></button>
 								</div>
 							</div>
 						</form>
@@ -184,30 +171,7 @@
 			<div class="up-btn" id="backTotop">UP</div>
 		</div>
 	</div>
-
-
-    <h1>{{ post.title }}</h1>
-    <p class="date">
-        Published {{ post.publish }} by {{ post.author }}
-    </p>
-    <h2>{{post.body}}</h2>
-    <form action="{% url 'like_post' post.pk %}", method="POST">
-      {% csrf_token %}
-      <button type="submit", name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">Like</button>  {{post.likes_in_total}} Likes
-    </form>
-       <br/>
-      <h2>Comments {{post.comments.all.count}}</h2>
-      <br/><br/><br/>
-      {% for comment in post.comments.all%}
-      <li>
-      By {{comment.author}} at {{comment.date}}<br/>
-      <br/><br/>
-      {{comment.body}}
-      </li>
-      {% endfor %}
-      <hr>
-      <h2>Add your comments</h2>
-      <form action='' id="form_add" method="POST">
+      <form action="{% url '' post.pk %}" id="form_add" method="POST">
       {% csrf_token %}
            {{form.as_p}}
       </form>

@@ -14,14 +14,6 @@ def blog_list(request):
     return render(request, 'blog_list.html', context )
 
 
-def get_likes(request, pk):
-    post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)
-    else:
-        post.likes.add(request.user)
-    return render(request,'blog_detail.html', {'post':post})
-
 class BlogDetailView(FormMixin, DetailView):
     model = Post
     form_class = CommentForm
@@ -32,10 +24,13 @@ class BlogDetailView(FormMixin, DetailView):
         return reverse_lazy('blog_detail', kwargs={'pk':self.get_object().id})
 
         
-    # def get_likes(request, pk):
-    #     post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    #     post.likes.add(request.user)
-    #     return render(request,'blog_detail.html', {'post':post})
+    def get_likes(request, pk):
+        post = get_object_or_404(Post, id=request.POST.get('post_id'))
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        return render(request,'blog_detail.html', {'post':post})
 
         
     def post(self,request, *args, **kwargs):
