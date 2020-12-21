@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'countries_cities',
     'account',
     "store",
+
 ]
 
 MIDDLEWARE = [

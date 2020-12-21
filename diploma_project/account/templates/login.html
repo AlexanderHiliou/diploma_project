@@ -1,31 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Login and Registartion Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> 
+</head>
+<body>
+    <div class="contain">
+	    <div class="form_box">
+		    <div class="button_box">
+			  <div id="btn"></div>
+				<button type="button" class="toggle-btn" onclick="login()">Log in</button>
+				<button type="button" class="toggle-btn" onclick="register()">Sing up</button>
+			</div><div class="reset">
+                  <a href="{% url 'password_reset' %}" class= "m1-m2">Reset your password</a>
+                  </div>
+			<form id="login" class="input-group" method="POST" action="" >
+             {% csrf_token %}
+			    <input class="input-field" type="text" name="username" placeholder="Username..."  required>
+				<input class="input-field" type="password" name="password" placeholder="Password..." required>
+				<button class="submit-btn" type="submit">Login</button>	
+		    </form>
+			
+		    <form id="register" class="input-group" method="POST" action="{% url 'reg_page' %}">
+             {% csrf_token %}
+			    <input id="id_username" class="input-field" type="text" name="username" placeholder="Username..." >
+				<input id="id_email" class="input-field" type="text" name="email" placeholder="Email...">
+				<input id="password1" class="input-field" type="password" name="password1" placeholder="Password..." >
+				<input id="password2" class="input-field" type="password" name="password2" placeholder="Repeat Password..." >
+				<button class="submit-btn" type="submit">Sing up</button>
+		    </form>
 
-<h3>Login</h3>
+{{form.errors}}
 
-		<form method="POST" action="">
-          {% csrf_token %}
-						<div class="input-group mb-3">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="text" name="username" placeholder="Username..." class="form-control">
-						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-								<input type="password" name="password" placeholder="Password..." class="form-control" >
-						</div>
+			<script>
+			var x = document.getElementById("login")
+			var y = document.getElementById("register")
+			var z = document.getElementById("btn")
 
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 				<input class="btn login_btn" type="submit" value="Login">
-				   			</div>
-		</form>
-  {% for message in messages%}
-        <p id="messages">{{message}}</p>
-  {% endfor %}
-   <div>
-        <a href="{% url 'reg_page' %}" class= "m1-m2">Sing up</a>
-   </div>
-   <div>
-        <a href="{% url 'password_reset' %}" class= "m1-m2">Reset your password</a>
-   </div>
+			function register(){
+				x.style.left = "-400px"
+				y.style.left = "50px"
+				z.style.left = "110px"
+			}
+			function login(){
+				x.style.left= "50px";
+				y.style.left = "450px";
+				z.style.left = "0px";
+			}
+
+	</script>
+</body>
+   {% endblock %}

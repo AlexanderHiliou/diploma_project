@@ -27,7 +27,7 @@ def reg_page(request):
                messages.success(request, 'Account was created by' + user)
                return redirect('log_page')
 
-        return render(request, 'register.html', {'form': form} )
+        return render(request, 'login.html', {'form': form} )
 
 
 def log_page(request):

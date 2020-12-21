@@ -1,19 +1,88 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #17a2b8;
-    height: 100vh;
   }
-  #login .container #login-row #login-column #login-box {
-    margin-top: 120px;
-    max-width: 600px;
-    height: 320px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
+  .contain{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../img/winter.jpg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
   }
-  #login .container #login-row #login-column #login-box #login-form {
-    padding: 20px;
+  .form_box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
   }
-  #login .container #login-row #login-column #login-box #login-form #register-link {
-    margin-top: -85px;
+  .button_box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px rgb(196, 157, 206);
+    border-radius: 30px;
+  }
+  .toggle-btn{
+    padding: 10px 20px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+  }
+  #btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right,#ff578f,#2b06ff);
+    border-radius: 30px;
+    transition: .5s;
+  }
+  .input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+  }
+  .input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+  }
+  .submit-btn{
+    width: 95%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    background: linear-gradient(to right,#ff578f,#2b06ff);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+  }
+  .reset{
+    margin: 30px;
+    padding:10px 50px;
+  }
+  
+  #login{
+    left: 50px;
+  }
+  #register{
+    left: 450px;
+  }
+  .central{
+    margin: 47px;
+    text-align: center;
   }

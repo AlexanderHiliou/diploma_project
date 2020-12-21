@@ -1,7 +1,25 @@
-<h3>Reset your password</h3>
-
-<form method="POST" action="">
-   {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="Reset">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> 
+</head>
+<body>
+<div class="contain">
+   <div class="form_box">
+	    <div class="central">
+          <h2>Reset your password</h2>
+       
+            <form class="input-group" method="POST" action="">
+                {% csrf_token %}
+			 <input id="password1" class="input-field" type="password" name="password1" placeholder="Password..." >
+			 <input id="password2" class="input-field" type="password" name="password2" placeholder="Repeat Password..." > 
+             <input type="submit" class="submit-btn" name="Reset" value="Reset">
+            </form>
+          </div>           
+</div>
+</div>
+</div>
+</body>
+{% endblock %}

@@ -21,7 +21,12 @@ def store(request):
         
     products = Product.objects.all()
     context = {"products":products, "cartItems":cartItems}
-    return render(request, "store/store.html", context)
+    return render(request, "store/store_page.html", context)
+
+def detail_product(request, pk):
+    page = Product.objects.get(id=pk)
+    return render(request, 'store/detail_product.html', {'el': page})
+
 
 
 def cart(request):

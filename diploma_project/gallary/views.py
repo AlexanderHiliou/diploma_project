@@ -19,6 +19,6 @@ def cities(request, id):
 
 def cour_view(request):
     gallery = Gallary.objects.all()
-    last = Gallary.objects.all()[0]
+    last = Gallary.objects.all()[4]
     content = {'gallery': gallery, 'last': last}
     return render(request, 'portfolio.html', content)

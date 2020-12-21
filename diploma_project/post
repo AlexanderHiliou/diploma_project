@@ -1,0 +1,50 @@
+                        List of relations
+ Schema |               Name                |   Type   |  Owner   
+--------+-----------------------------------+----------+----------
+ public | auth_group                        | table    | postgres
+ public | auth_group_id_seq                 | sequence | postgres
+ public | auth_group_permissions            | table    | postgres
+ public | auth_group_permissions_id_seq     | sequence | postgres
+ public | auth_permission                   | table    | postgres
+ public | auth_permission_id_seq            | sequence | postgres
+ public | auth_user                         | table    | postgres
+ public | auth_user_groups                  | table    | postgres
+ public | auth_user_groups_id_seq           | sequence | postgres
+ public | auth_user_id_seq                  | sequence | postgres
+ public | auth_user_user_permissions        | table    | postgres
+ public | auth_user_user_permissions_id_seq | sequence | postgres
+ public | blog_comment                      | table    | postgres
+ public | blog_comment_id_seq               | sequence | postgres
+ public | blog_tag                          | table    | postgres
+ public | blog_tag_id_seq                   | sequence | postgres
+ public | city                              | table    | postgres
+ public | city_id_seq                       | sequence | postgres
+ public | country                           | table    | postgres
+ public | country_id_seq                    | sequence | postgres
+ public | django_admin_log                  | table    | postgres
+ public | django_admin_log_id_seq           | sequence | postgres
+ public | django_content_type               | table    | postgres
+ public | django_content_type_id_seq        | sequence | postgres
+ public | django_migrations                 | table    | postgres
+ public | django_migrations_id_seq          | sequence | postgres
+ public | django_session                    | table    | postgres
+ public | gallary                           | table    | postgres
+ public | gallary_id_seq                    | sequence | postgres
+ public | post                              | table    | postgres
+ public | post_id_seq                       | sequence | postgres
+ public | post_likes                        | table    | postgres
+ public | post_likes_id_seq                 | sequence | postgres
+ public | post_tag                          | table    | postgres
+ public | post_tag_id_seq                   | sequence | postgres
+ public | store_customer                    | table    | postgres
+ public | store_customer_id_seq             | sequence | postgres
+ public | store_order                       | table    | postgres
+ public | store_order_id_seq                | sequence | postgres
+ public | store_orderitem                   | table    | postgres
+ public | store_orderitem_id_seq            | sequence | postgres
+ public | store_product                     | table    | postgres
+ public | store_product_id_seq              | sequence | postgres
+ public | store_shippingaddress             | table    | postgres
+ public | store_shippingaddress_id_seq      | sequence | postgres
+(45 rows)
+
