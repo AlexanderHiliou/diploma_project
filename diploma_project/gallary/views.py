@@ -14,3 +14,11 @@ def cities(request, id):
     cities = City.objects.filter(country=id)
     content = {'cities': cities}
     return render(request, 'cities.html', content)
+
+
+
+def cour_view(request):
+    gallery = Gallary.objects.all()
+    last = Gallary.objects.all()[0]
+    content = {'gallery': gallery, 'last': last}
+    return render(request, 'portfolio.html', content)

@@ -25,20 +25,16 @@
 			<li><a href="#">Cruise Collection</a></li>
 			<li><a href="#">Men Collection</a></li>
 		</ul>
-		<img src="img/portfolio-2/1.jpg" alt="" class="portfolio-big-img">
+		<img src="{{ last.photo.url }}" alt="" class="portfolio-big-img">
 		<!-- Related portfolio slider -->
 		<div class="portfolio-slider owl-carousel">
-			<a href="#"><img src="img/portfolio-2/2.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/3.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/4.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/5.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/6.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/7.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/8.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/9.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/10.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/11.jpg" alt=""></a>
-			<a href="#"><img src="img/portfolio-2/6.jpg" alt=""></a>
+		{% for photo in gallery %}
+			<a href="#"><img src="{{ photo.photo_2.url }}" alt=""></a>
+			<a href="#"><img src="{{ photo.photo_3.url }}" alt=""></a>
+			<a href="#"><img src="{{ photo.photo_4.url }}" alt=""></a>
+			<a href="#"><img src="{{ photo.photo_5.url }}" alt=""></a>
+			<a href="#"><img src="{{ photo.photo_6.url }}" alt=""></a>
+		{% endfor %}
 		</div>
 	</div>
 	<!-- Portfolio page end-->
@@ -109,9 +105,7 @@
 				</div>
 			</div>
 
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
 
 		</div>
 	</footer>

@@ -1,21 +1,18 @@
 {% extends "base.html" %}
-{% load static%}
-{% block countent %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <div>
-        {% for country in countries %}
-            <h3><a href="{% url 'country_details' country.id %}">{{ country.name }}</a></h3>
-            <p>{{ country.description }}<p>
-            <p>{{ country.image_tag }}</p>
-    
-        {% endfor %}
-    </div>
-</body>
-</html>
+{% load static %}
+{% block content %}
+{% comment %} <section class="page-top-section set-bg" data-setbg="{% static 'img/header-bg/1.jpg' %}">
+	<h2>Countries</h2>
+</section> {% endcomment %}
+<section class="award-section spad">
+	<div class="container">
+		<div class="award-slider owl-carousel">
+			{% for country in countries %}
+				<a href="{% url 'country_details' country.id %}"><img src='{{ country.icon.url }}' width="270" height="188"></a>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+
 {% endblock %}

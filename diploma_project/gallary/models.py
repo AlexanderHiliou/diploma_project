@@ -17,8 +17,6 @@ class Gallary(models.Model):
 
 
     name = models.CharField(max_length=50)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
     photo_2 = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
     photo_3 = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
@@ -29,6 +27,8 @@ class Gallary(models.Model):
     photo_8 = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
     photo_9 = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
     photo_10 = models.ImageField(upload_to=load_photo, null=True, verbose_name='Фотография')
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
 
     def __str__(self):

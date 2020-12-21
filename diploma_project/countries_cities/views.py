@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Country, City
+from .models import Country, City, ArticlePreview, ArticleText
 
 
 def get_countries(request):
@@ -9,6 +9,15 @@ def get_countries(request):
 
 
 def country_details(request, id):
-    details = City.objects.filter(country=id)
-    content = {'details': details}
+    articles = ArticlePreview.objects.all()[:5]
+    country = Country.objects.filter(country=id)
+    content = {'country': country, 'articles': articles}
     return render(request, 'country_detail.html', content)
+
+
+def article_detail(request, id):
+    articles = ArticleText.objects.filter(article=id)
+    articles_name = ArticlePreview.objects.filter(article=id)
+    content = {'articles': articles, 'articles_name': articles_name}
+    return render(request, 'article_detail.html', content)
+

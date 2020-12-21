@@ -32,6 +32,11 @@
     src: local("Helvetica Neue Bold"), url("../fonts/HelveticaNeueBold.woff") format("woff");
 }
 
+.flag-img {
+  display: block;
+  margin: 0 auto;
+}
+
 html,
 body {
     height: 100%;
