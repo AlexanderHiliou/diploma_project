@@ -28,7 +28,9 @@
 									</div>
 								</div>
 								<div class="blog-head">
-									<div class="blog-tags">fashion, event, lifestyle</div>
+							        {% for e in last.tags.all%}
+									<div class="blog-tags">{{e.name}}</div>
+									{% endfor %}
 									<h2><a href="{% url 'blog_detail' last.pk %}">{{ last.title }}</h2>
 								</div>
 								<p>Published {{ last.publish }} by {{ last.author }}</p>
@@ -44,8 +46,10 @@
 										{{post.publish.month}}</h2>										
 									</div>
 								</div>
-								<div class="blog-head bh-sm">
-									<div class="blog-tags">fashion, event, lifestyle</div>
+								<div class="blog-head bh-sm">  
+								{% for e in post.tags.all%}
+								    <div class="blog-tags">{{ e.name }}</div>
+									{% endfor %}
 									<h2><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h2>
 								</div>
 								<p>Published {{ post.publish }} by {{ post.author }}</p>
@@ -109,14 +113,11 @@
 				<div class="sb-widget">
 					<div class="categories-widget">
 						<h2 class="sb-title">Categories</h2>
+						{% for tag in tags%}
 						<ul>
-							<li><a href="#">Fashion</a></li>
-							<li><a href="#">Lifestyle</a></li>
-							<li><a href="#">Travel</a></li>
-							<li><a href="#">Make up</a></li>
-							<li><a href="#">Community</a></li>
-							<li><a href="#">Uncategorized</a></li>
+							<li><a href="#">{{tag.name}}</a></li>
 						</ul>
+						{% endfor %}
 					</div>
 				</div>
 				<!-- widget -->

@@ -3,15 +3,18 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import FormMixin
 
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import CommentForm
 
 
 def blog_list(request):
     last = Post.objects.latest()
     list_o = Post.objects.all()[1:]
-    context = {'list': list_o, 'last': last }
+    tags = Tag.objects.all()
+    context = {'list': list_o, 'last': last, 'tags': tags}
     return render(request, 'blog_list.html', context )
+
+
 
 def get_likes(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
@@ -25,13 +28,20 @@ def get_likes(request, pk):
 class BlogDetailView(FormMixin, DetailView):
     model = Post
     form_class = CommentForm
-    context_object_name = "post"
+    context_object_names = "post"
+    
     template_name = "blog_detail.html"
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
 
     def get_success_url(self):
-        return reverse_lazy('blog_detail', kwargs={'pk':self.get_object().id})
+        return reverse_lazy('blog_detail', {'pk':self.get_object().id})
 
-        
+     
     def post(self,request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():

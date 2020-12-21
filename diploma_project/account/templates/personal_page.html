@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html>
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>Login and Registartion Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> 
 </head>
 <body>
-<div id="content">
+ <div id="content">
    <span> Hello {{request.user}}</span> 
-<span><a href="{% url 'logout' %}">Log out</a></span>
-</div>
+ <span><a href="{% url 'logout' %}">Log out</a></span>
+ </div>
 </body>
-</html>
 {% endblock %}

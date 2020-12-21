@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     STATUS_VARIANT = (
         ('draft', 'Draft'),
@@ -18,6 +24,7 @@ class Post(models.Model):
     status = models.CharField(max_length=10, choices = STATUS_VARIANT, default='draft')
     image = models.ImageField(null=True, blank=True)
     likes = models.ManyToManyField(User, blank=True, related_name='blog_likes')
+    tags = models.ManyToManyField(Tag)
 
     def likes_in_total(self):
         return self.likes.count()
@@ -51,4 +58,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.post.title
+
 # Create your models here.

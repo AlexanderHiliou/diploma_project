@@ -29,7 +29,9 @@
 							</div>
 						</div>
 						<div class="blog-head">
-							<div class="blog-tags">fashion, event, lifestyle</div>
+						          {% for e in post.tags.all%}
+								    <div class="blog-tags">{{ e.name }}</div>
+									{% endfor %}
 							<h2>{{ post.title }}</h2>
 							<h3>Published {{ post.publish }} by {{ post.author }}</h3>
 						</div>
@@ -120,14 +122,11 @@
 					<div class="sb-widget">
 						<div class="categories-widget">
 							<h2 class="sb-title">Categories</h2>
+							{% for tag in tags%}
 							<ul>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Travel</a></li>
-								<li><a href="#">Make up</a></li>
-								<li><a href="#">Community</a></li>
-								<li><a href="#">Uncategorized</a></li>
+								<li><a href="#">{{tag.name}}</a></li>
 							</ul>
+							{% endfor %}
 						</div>
 					</div>
 					<!-- widget -->
@@ -166,15 +165,5 @@
 
 
 	<!-- Back to top -->
-	<div class="container">
-		<div class="backtotop">
-			<div class="up-btn" id="backTotop">UP</div>
-		</div>
-	</div>
-      <form action='' id="form_add" method="POST">
-      {% csrf_token %}
-           {{form.as_p}}
-      </form>
-      <button  form="form_add", type="submit", class="btn btn-primary btn-sm">Add One</button> 
-   
+
 {% endblock %}
